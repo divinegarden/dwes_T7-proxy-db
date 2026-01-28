@@ -21,20 +21,22 @@ npm  install  next-auth@beta
 ### Instalar soporte de Base Datos
 
 ```sh
-npm install prisma -D
-npm install @prisma/client
+npm install prisma@6 -D
+npm install @prisma/client@6
 
 npx prisma init  # para crear archivo prisma/schema.prisma
 ```
 
-Creamos archivo `lib/db.js`
+Creamos archivo `lib/prisma.js`
 
 ```js
 import { PrismaClient } from "@prisma/client";
 
-export const db = globalThis.prisma || new PrismaClient()
+const prisma = globalThis.prisma || new PrismaClient()
 
-if (process.env.NODE_ENV !== 'production') globalThis.prisma = db
+if (process.env.NODE_ENV !== 'production') globalThis.prisma = prisma
+
+export default prisma
 ```
 
 Editamos archivo `prisma/schema.prisma`
@@ -47,7 +49,6 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url  	    = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }
 
 model User {
