@@ -16,7 +16,7 @@ export function LoginForm({ className }) {
                         name='email'
                         defaultValue={state.fields?.email || ''}
                         placeholder="jose@example.com"
-                        className='peer block w-full'
+                        className='peer block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
                         required
                     />
                     <p className="invisible peer-invalid:visible text-red-300">
@@ -28,11 +28,13 @@ export function LoginForm({ className }) {
                         name='password'
                         defaultValue={state.fields?.password || ''}
                         placeholder="******"
-                        className='block w-full'
+                        className='block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
                     />
                 </label>
 
-                <button type="submit" disabled={pending} className="mt-8 px-8 py-4 bg-slate-900 hover:bg-slate-200 hover:font-bold hover:cursor-pointer text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse">
+                <div className='h-10' /> {/* Separación */}
+
+                <button type="submit" disabled={pending} className="rounded-md mt-8 px-8 py-4 bg-slate-900 hover:bg-slate-200 hover:font-bold hover:cursor-pointer text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse">
                     {pending ? 'Iniciando sessión...' : 'Iniciar sessión'}
                 </button>
 

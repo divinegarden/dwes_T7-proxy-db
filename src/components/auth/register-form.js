@@ -16,7 +16,7 @@ function RegisterForm({ className }) {
                         name='name'
                         defaultValue={state.fields?.name || ''}
                         placeholder="Jose Pérez"
-                        className='block w-full'
+                        className='block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
                         required
                     />
                 </label>
@@ -25,7 +25,7 @@ function RegisterForm({ className }) {
                         name='email'
                         defaultValue={state.fields?.email || ''}
                         placeholder="jose@example.com"
-                        className='peer block w-full'
+                        className='peer block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
                     />
                     <p className="invisible peer-invalid:visible text-red-300">
                         Por favor, introduce un email válido.
@@ -36,11 +36,13 @@ function RegisterForm({ className }) {
                         name='password'
                         defaultValue={state.fields?.password || ''}
                         placeholder="******"
-                        className='block w-full'
+                        className='block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
                     />
                 </label>
 
-                <button type="submit" disabled={pending} className="mt-8 px-8 py-4 hover:cursor-pointer bg-slate-900 hover:bg-slate-200 hover:font-bold text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse" >
+                <div className='h-10' /> {/* Separación */}
+
+                <button type="submit" disabled={pending} className="rounded-md mt-8 px-8 py-4 hover:cursor-pointer bg-slate-900 hover:bg-slate-200 hover:font-bold text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse" >
                     {pending ? 'Creando cuenta...' : 'Crear cuenta'}
                 </button>
                 <p className={state?.success ? 'text-green-500' : 'hidden'}> {state.success} </p>
