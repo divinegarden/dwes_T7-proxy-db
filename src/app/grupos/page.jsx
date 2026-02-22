@@ -2,6 +2,7 @@ import ListaGrupos from '@/components/grupos/lista'
 import { obtenerGrupos } from '@/lib/data'
 import Link from 'next/link'
 import { Suspense } from 'react'
+import { auth } from "@/auth"
 
 
 export default function PaginaGrupos() {
@@ -22,6 +23,7 @@ export default function PaginaGrupos() {
             <Suspense fallback={<p className='text-2xl font-[Delius_Swash_Caps] text-customHG'>Cargando...</p>}>
                 <ListaGrupos
                     promesaGrupos={promesaGrupos}
+                    promesaSesion={auth()}
                 />
             </Suspense>
         </div>

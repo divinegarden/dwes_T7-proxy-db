@@ -10,8 +10,9 @@ import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons
 
 
 
-export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, promesaAsignaturasIdNombre }) {
-
+export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, promesaAsignaturasIdNombre, promesaSesion }) {
+    const sesion = use(promesaSesion)
+    const isAdminSession = sesion.user?.role === 'ADMIN'
     const estudiantes = use(promesaEstudiantes)
     const gruposIdNombre = use(promesaGruposIdNombre)
     const asignaturasIdNombre = use(promesaAsignaturasIdNombre)
@@ -73,14 +74,20 @@ export default function Lista({ promesaEstudiantes, promesaGruposIdNombre, prome
         <div className="flex flex-col gap-4">
 
             <div className='flex justify-end items-center gap-4 pb-4'>
-                <Insertar />
+                {isAdminSession === 'ADMIN' &&
+                    <Insertar />
+                }
             </div>
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
                 {estudiantes.map((estudiante) =>
                     <Card key={estudiante.id} estudiante={estudiante}>
-                        <Editar estudiante={estudiante} />
-                        <Eliminar estudiante={estudiante} />
+                        {isAdminSession === 'ADMIN' && 
+                        <>
+                            <Editar estudiante={estudiante} />
+                            <Eliminar estudiante={estudiante} />
+                        </>
+                        }
                     </Card>
                 )}
             </div>

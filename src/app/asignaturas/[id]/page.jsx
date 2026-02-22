@@ -4,7 +4,7 @@ import { Suspense, use } from 'react'
 
 
 async function PaginaAsignatura({ params }) {
-    const { id } = await params
+    const { id } = await params;
 
     const promesaAsignatura = obtenerAsignatura(id) // Promesa, no usamos AWAIT
 
@@ -15,7 +15,7 @@ async function PaginaAsignatura({ params }) {
             </BackButton>
 
             <Suspense fallback={<p className='text-2xl font-[Delius_Swash_Caps] text-customHG'>Cargando...</p>}>
-                <Asignatura promesaAsignatura={promesaAsignatura} />
+                <Asignatura promesaAsignatura={promesaAsignatura}/>
             </Suspense>
 
         </div>

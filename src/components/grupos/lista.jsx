@@ -7,8 +7,10 @@ import { eliminarGrupo, insertarGrupo, modificarGrupo } from '@/lib/actions'
 import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons'
 
 
-export default function Lista({ promesaGrupos }) {
-
+export default function Lista({ promesaGrupos, promesaSesion  }) {
+    const sesion = use(promesaSesion)
+    const isAdminSession = sesion.user?.role === 'ADMIN'
+    
     const dataGrupos = use(promesaGrupos)
     const [propiedad, setPropiedad] = useState('nombre')
     const [orden, setOrden] = useState('')
@@ -110,15 +112,21 @@ export default function Lista({ promesaGrupos }) {
             </div>
 
             <div className='flex justify-end items-center gap-4 pb-4'>
-                <Insertar />
+                {isAdminSession === 'ADMIN' &&
+                    <Insertar />
+                }
             </div>
 
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
                 {grupos.map((grupo) =>
                     <Card key={grupo.id} grupo={grupo}>
-                        <Editar grupo={grupo} />
-                        <Eliminar grupo={grupo} />
+                        {isAdminSession === 'ADMIN' && 
+                            <>
+                                <Editar grupo={grupo} />
+                                <Eliminar grupo={grupo} />
+                            </>
+                        }
                     </Card>)}
             </div>
         </div >

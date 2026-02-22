@@ -8,8 +8,10 @@ import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons
 
 
 
-export default function Lista({ promesaAsignaturas }) {
+export default function Lista({ promesaAsignaturas, promesaSesion }) {
     const asignaturas = use(promesaAsignaturas)
+    const sesion = use(promesaSesion)
+    const isAdminSession = sesion.user?.role === 'ADMIN'
 
 
     const Insertar = () =>
@@ -63,14 +65,20 @@ export default function Lista({ promesaAsignaturas }) {
     return (
         <div className="flex flex-col gap-4">
             <div className='flex justify-end items-center gap-4 pb-4'>
-                <Insertar />
+                {isAdminSession === 'ADMIN' &&
+                    <Insertar />
+                }
             </div>
 
             <div className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10'>
                 {asignaturas.map((asignatura) =>
                     <Card key={asignatura.id} asignatura={asignatura}>
-                        <Editar asignatura={asignatura} />
-                        <Eliminar asignatura={asignatura} />
+                        {isAdminSession === 'ADMIN' &&
+                            <>
+                                <Editar asignatura={asignatura} />
+                                <Eliminar asignatura={asignatura} />
+                            </>
+                        }
                     </Card>
                 )}
             </div>

@@ -1,4 +1,5 @@
 import ListaEstudiantes from '@/components/estudiantes/lista'
+import { auth } from "@/auth"
 import { obtenerAsignaturasIdNombre, obtenerEstudiantes, obtenerGruposIdNombre } from '@/lib/data'
 import { Suspense } from 'react'
 import Link from 'next/link'
@@ -6,8 +7,7 @@ import Link from 'next/link'
 
 
 
-export default function PaginaEstudiantes() {
-
+export default async function PaginaEstudiantes() {
     const promesaEstudiantes = obtenerEstudiantes()  // Promesa, no usamos AWAIT
     const promesaGruposIdNombre = obtenerGruposIdNombre()
     const promesaAsignaturasIdNombre = obtenerAsignaturasIdNombre()
@@ -30,6 +30,7 @@ export default function PaginaEstudiantes() {
                     promesaEstudiantes={promesaEstudiantes}
                     promesaGruposIdNombre={promesaGruposIdNombre}
                     promesaAsignaturasIdNombre={promesaAsignaturasIdNombre}
+                    promesaSesion={auth()}
                 />
             </Suspense>
         </div>
