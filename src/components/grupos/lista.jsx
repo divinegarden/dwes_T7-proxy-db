@@ -9,7 +9,7 @@ import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons
 
 export default function Lista({ promesaGrupos, promesaSesion  }) {
     const sesion = use(promesaSesion)
-    const isAdminSession = sesion.user?.role === 'ADMIN'
+    const isAdminSession = sesion.user?.role
     
     const dataGrupos = use(promesaGrupos)
     const [propiedad, setPropiedad] = useState('nombre')

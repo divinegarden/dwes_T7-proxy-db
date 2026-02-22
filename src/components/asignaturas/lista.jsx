@@ -11,7 +11,7 @@ import { IconoInsertar, IconoModificar, IconoEliminar } from '@/components/icons
 export default function Lista({ promesaAsignaturas, promesaSesion }) {
     const asignaturas = use(promesaAsignaturas)
     const sesion = use(promesaSesion)
-    const isAdminSession = sesion.user?.role === 'ADMIN'
+    const isAdminSession = sesion.user?.role
 
 
     const Insertar = () =>
