@@ -3,7 +3,7 @@ import LoginForm from '@/components/auth/login-form'
 import OauthForm from '@/components/auth/oauth-form'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation';
-import { CirclePlus, Play, Globe } from 'lucide-react'
+import { ClipboardPlus, ClipboardPaste, AppWindow } from 'lucide-react'
 
 // https://next-auth.js.org/configuration/pages#sign-in-page
 const errors = new Map();
@@ -40,8 +40,8 @@ async function PaginaLogin({ searchParams }) {
       <label
         htmlFor="signup"
         title="Registro"
-        className='absolute right-0 text-slate-300 peer-checked/register:text-black'>
-        <CirclePlus />
+        className='absolute right-0 text-hoverHG peer-checked/register:text-hoverPink'>
+        <ClipboardPlus />
       </label>
 
       <input
@@ -53,27 +53,27 @@ async function PaginaLogin({ searchParams }) {
       <label
         htmlFor="signin"
         title="Iniciar sesión"
-        className='absolute right-10 text-slate-300 peer-checked/login:text-black'>
-        <Play />
+        className='absolute right-10 text-hoverHG peer-checked/login:text-hoverPink'>
+        <ClipboardPaste />
       </label>
 
       <input
         id="signoauth"
-        title="Iniciar sesión OAuth"
+        title="Iniciar sesión con OAuth"
         type="radio" name="sign"
         className="hidden peer/oauth"
       />
       <label
         htmlFor="signoauth"
         title="Iniciar sesión con OAuth"
-        className='absolute right-20 text-slate-300 peer-checked/oauth:text-black'>
-        <Globe />
+        className='absolute right-20 text-hoverHG peer-checked/oauth:text-hoverPink'>
+        <AppWindow />
       </label>
 
 
-      <RegisterForm className="hidden peer-checked/register:block w-full bg-[snow] mt-10 border-2 border-slate-400 rounded-md mx-auto p-8 " />
-      <LoginForm className="hidden peer-checked/login:block w-full bg-[snow] mt-10 border-2 border-slate-400 rounded-md mx-auto p-8 " />
-      <OauthForm className="hidden peer-checked/oauth:block w-full bg-[snow] mt-10 border-2 border-slate-400 rounded-md mx-auto p-8 " />
+      <RegisterForm className="hidden peer-checked/register:block w-full border-2 border-customPink bg-decoration h-max py-20 px-10 rounded-4xl mt-10 " />
+      <LoginForm className="hidden peer-checked/login:block w-full border-2 border-customPink bg-decoration h-max py-20 px-10 rounded-4xl mt-10 " />
+      <OauthForm className="hidden peer-checked/oauth:block w-full border-2 border-customPink bg-decoration h-max py-20 px-10 rounded-4xl mt-10 " />
       {error && <p className='text-red-400'>{errors.get(error)}</p>}
     </div>
   )

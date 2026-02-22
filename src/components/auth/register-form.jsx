@@ -9,14 +9,14 @@ function RegisterForm({ className }) {
 
     return (
         <form action={action} className={className}>
-            <h1 className="text-3xl font-bold mb-4">Registro</h1>
+            <h1 className="text-center text-6xl font-[Delius_Swash_Caps] font-extrabold text-hoverPink hover:text-customPink mb-4">Registro</h1>
             <div className='flex flex-col gap-4'>
                 <label>Nombre
                     <input type='text'
                         name='name'
                         defaultValue={state.fields?.name || ''}
-                        placeholder="Jose Pérez"
-                        className='block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
+                        placeholder="Nombre de Usuario"
+                        className='block w-full py-2 px-4 focus:outline-customHG rounded-md'
                         required
                     />
                 </label>
@@ -24,8 +24,8 @@ function RegisterForm({ className }) {
                     <input type='email'
                         name='email'
                         defaultValue={state.fields?.email || ''}
-                        placeholder="jose@example.com"
-                        className='peer block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
+                        placeholder="ejemplo@ejemplo.com"
+                        className='peer block w-full py-2 px-4 focus:outline-customHG rounded-md'
                     />
                     <p className="invisible peer-invalid:visible text-red-300">
                         Por favor, introduce un email válido.
@@ -36,13 +36,13 @@ function RegisterForm({ className }) {
                         name='password'
                         defaultValue={state.fields?.password || ''}
                         placeholder="******"
-                        className='block w-full py-2 px-4 focus:outline-slate-200 rounded-md'
+                        className='block w-full py-2 px-4 focus:outline-customHG rounded-md'
                     />
                 </label>
 
                 <div className='h-10' /> {/* Separación */}
 
-                <button type="submit" disabled={pending} className="rounded-md mt-8 px-8 py-4 hover:cursor-pointer bg-slate-900 hover:bg-slate-200 hover:font-bold text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse" >
+                <button type="submit" disabled={pending} className="mt-8 bg-decoration hover:font-bold border-4 text-center border-hoverHG rounded-4xl px-3 py-2 hover:text-hoverHG disabled:bg-customHG disabled:animate-pulse" >
                     {pending ? 'Creando cuenta...' : 'Crear cuenta'}
                 </button>
                 <p className={state?.success ? 'text-green-500' : 'hidden'}> {state.success} </p>

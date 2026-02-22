@@ -4,21 +4,21 @@ function OauthForm({ className, error }) {
 
   return (
     <form className={className}>
-      <h1 className="text-3xl font-bold mb-4">Iniciar sesión OAuth</h1>
+      <h1 className="text-center text-4xl font-[Delius_Swash_Caps] font-extrabold text-hoverPink hover:text-customPink mb-4">Iniciar sesión OAuth</h1>
 
-      <div className='flex flex-col gap-1'>
+      <div className='flex flex-col gap-3'>
         <button formAction={loginGoogle}
-          className="rounded-md flex gap-2 items-center px-8 py-4 bg-slate-900 hover:bg-slate-200 hover:font-bold hover:cursor-pointer text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse">
+          className="flex gap-3 items-center bg-decoration hover:font-bold border-4 text-center border-hoverHG rounded-4xl px-3 py-2 hover:text-hoverHG disabled:bg-customHG disabled:animate-pulse">
           <img src="/images/google.svg" alt="Google" />  Iniciar sesión con Google
         </button>
 
         <button formAction={loginGithub}
-          className="rounded-md flex gap-2 items-center px-8 py-4 bg-slate-900 hover:bg-slate-200 hover:font-bold hover:cursor-pointer text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse">
+          className="flex gap-3 items-center bg-decoration hover:font-bold border-4 text-center border-hoverHG rounded-4xl px-3 py-2 hover:text-hoverHG disabled:bg-customHG disabled:animate-pulse">
           <img src="/images/github.svg" alt="Github" /> Iniciar sesión con Github
         </button>
 
         <button formAction={loginDiscord}
-          className="rounded-md flex gap-2 items-center px-8 py-4 bg-slate-900 hover:bg-slate-200 hover:font-bold hover:cursor-pointer text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse">
+          className="flex gap-3 items-center bg-decoration hover:font-bold border-4 text-center border-hoverHG rounded-4xl px-3 py-2 hover:text-hoverHG disabled:bg-customHG disabled:animate-pulse">
           <img src="/images/discord.svg" alt="Discord" /> Iniciar sesión con Discord
         </button>
         {error}

@@ -23,29 +23,69 @@
   }
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --background: url('/images/design/lightbg.png');
+  --foreground: #1d020c;
+  
+  --color-decoration: #ffffff;
+
+  --color-customPink: #ffd5e4;
+  --color-hoverPink: #ffc1d7;
+  --color-customHG: #fff4b8;
+  --color-hoverHG: #ffe96a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: url('/images/design/darkbg.png');
+    --foreground: #ffffff;
+    --color-decoration: #1d020c;
+
+    --color-customPink: #47021a;
+    --color-hoverPink: #7d042e;
+    --color-customHG: #254429;
+    --color-hoverHG: #375e3d;
+    
   }
 }
 
 html {
-  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  scrollbar-color: var(--color-hoverPink) var(--color-customPink);
+
+  cursor: url('https://cdn.cursors-4u.net/previews/oxygen-cherry-5eda5de9-32.webp') 32 32, auto !important;
 }
 
 body {
+  min-height: 100vh;
+  max-width: 100vw;
+
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-size: 100%;
+  background-repeat: repeat;
+  font-family: 'Quicksand', sans-serif;
 }
 
 input {
   padding-inline: 20px;
   padding-block: 10px;
+}
+
+button, a{
+  display: flex;
+  gap: 5px;
+  transition: .3s ease-in;
+}
+
+label {
+  transition: .3s ease-in;
+}
+
+button:hover, a:hover, label:hover{
+  cursor: url('https://cdn.cursors-4u.net/previews/oxygen-cherry-hand-d8d991ef-32.webp') 39 33, auto !important;
+}
+
+input:hover, input:focus{
+  cursor: url('https://cdn.cursors-4u.net/previews/oxygen-cherry-text-dd635201-32.webp') 36 41, auto !important;
 }
