@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@theme {
+  --background: url('/images/design/lightbg.png');
+  --foreground: #1d020c;
+  
+  --color-decoration: #ffffff;
+
+  --color-customPink: #ffd5e4;
+  --color-hoverPink: #ffc1d7;
+  --color-customHG: #fff4b8;
+  --color-hoverHG: #ffe96a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: url('/images/design/darkbg.png');
+    --foreground: #ffffff;
+    --color-decoration: #1d020c;
+
+    --color-customPink: #47021a;
+    --color-hoverPink: #7d042e;
+    --color-customHG: #254429;
+    --color-hoverHG: #375e3d;
+    
+  }
+}
+
+html {
+  overflow-y: scroll;
+  scrollbar-color: var(--color-hoverPink) var(--color-customPink);
+
+  cursor: url('https://cdn.cursors-4u.net/previews/oxygen-cherry-5eda5de9-32.webp') 32 32, auto !important;
+}
+
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+
+  color: var(--foreground);
+  background: var(--background);
+  background-size: 100%;
+  background-repeat: repeat;
+  font-family: 'Quicksand', sans-serif;
+}
+
+input {
+  padding-inline: 20px;
+  padding-block: 10px;
+}
+
+button, a{
+  display: flex;
+  gap: 5px;
+  transition: .3s ease-in;
+}
+
+label {
+  transition: .3s ease-in;
+}
+
+button:hover, a:hover, label:hover{
+  cursor: url('https://cdn.cursors-4u.net/previews/oxygen-cherry-hand-d8d991ef-32.webp') 39 33, auto !important;
+}
+
+input:hover, input:focus{
+  cursor: url('https://cdn.cursors-4u.net/previews/oxygen-cherry-text-dd635201-32.webp') 36 41, auto !important;
+}
